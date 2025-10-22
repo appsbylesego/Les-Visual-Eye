@@ -1,11 +1,11 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { HiArrowLeft, HiX, HiZoomIn, HiZoomOut } from 'react-icons/hi';
+import { HiArrowLeft, HiX, HiZoomIn, HiZoomOut, HiPlay, HiPause, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 // Photo categories with exact structure
 const photoCategories = [
-  { id: 'face-closeups', title: 'Face Close-ups', count: 2, description: 'Intense and expressive shots that capture your eyes, emotion, and energy.' },
+  { id: 'face-closeups', title: 'Face Close-Ups', count: 2, description: 'Intense and expressive shots that capture your eyes, emotion, and energy.' },
   { id: 'head-shoulders', title: 'Head & Shoulders Portrait', count: 2, description: 'A clean, confident composition — timeless and cinematic.' },
   { id: 'half-body', title: 'Half-Body Shot', count: 2, description: 'Waist-up portraits that show attitude, confidence, and movement.' },
   { id: 'full-body', title: 'Full-Body Portrait', count: 2, description: 'Elegant posing and full presence — captures your outfit, stance, and personality.' },
@@ -42,6 +42,11 @@ const ClientPortfolio = () => {
   const { clientId } = useParams<{ clientId: string }>();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [isSlideshow, setIsSlideshow] = useState(false);
+  const [slideshowIndex, setSlideshowIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showControls, setShowControls] = useState(true);
+  const [mouseTimeout, setMouseTimeout] = useState<number | null>(null);
 
   const client = clientData[clientId || ''] || {
     name: 'Sample Client',
@@ -50,8 +55,78 @@ const ClientPortfolio = () => {
     photos: {}
   };
 
+  // Create flat array of all photos for slideshow
+  const allPhotos: Array<{ categoryTitle: string; photoIndex: number; categoryId: string }> = [];
+  photoCategories.forEach(category => {
+    for (let i = 0; i < category.count; i++) {
+      allPhotos.push({
+        categoryTitle: category.title,
+        photoIndex: i,
+        categoryId: category.id
+      });
+    }
+  });
+
   const handleZoomIn = () => setZoomLevel(prev => Math.min(prev + 0.5, 3));
   const handleZoomOut = () => setZoomLevel(prev => Math.max(prev - 0.5, 1));
+
+  // Slideshow auto-play
+  useEffect(() => {
+    if (isSlideshow && isPlaying) {
+      const interval = setInterval(() => {
+        setSlideshowIndex(prev => (prev + 1) % allPhotos.length);
+      }, 3000); // Change photo every 3 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [isSlideshow, isPlaying, allPhotos.length]);
+
+  const handleNextSlide = () => {
+    setSlideshowIndex(prev => (prev + 1) % allPhotos.length);
+  };
+
+  const handlePrevSlide = () => {
+    setSlideshowIndex(prev => (prev - 1 + allPhotos.length) % allPhotos.length);
+  };
+
+  const startSlideshow = () => {
+    setIsSlideshow(true);
+    setIsPlaying(true);
+    setSlideshowIndex(0);
+    setShowControls(true);
+
+    // Start the auto-hide timer immediately when slideshow begins
+    const timeout = setTimeout(() => {
+      setShowControls(false);
+    }, 3000);
+    setMouseTimeout(timeout);
+  };
+
+  // Handle mouse movement to show/hide controls
+  const handleMouseMove = () => {
+    setShowControls(true);
+
+    // Clear existing timeout
+    if (mouseTimeout) {
+      clearTimeout(mouseTimeout);
+    }
+
+    // Hide controls after 3 seconds of no mouse movement
+    const timeout = setTimeout(() => {
+      setShowControls(false);
+    }, 3000);
+
+    setMouseTimeout(timeout);
+  };
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (mouseTimeout) {
+        clearTimeout(mouseTimeout);
+      }
+    };
+  }, [mouseTimeout]);
 
   return (
     <div className="min-h-screen bg-charcoal text-white">
@@ -92,9 +167,23 @@ const ClientPortfolio = () => {
             Cinematic Session
           </h2>
           <div className="w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" />
-          <p className="text-lg text-gray-300">
+          <p className="text-lg text-gray-300 mb-8">
             18 frames capturing every emotion, every angle, every story.
           </p>
+
+          {/* Slideshow Button */}
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={startSlideshow}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gold to-cinematic-orange text-charcoal font-bold rounded-lg hover:shadow-lg hover:shadow-gold/50 transition-all duration-300 group"
+          >
+            <HiPlay className="text-2xl group-hover:scale-110 transition-transform" />
+            <span>Start Cinematic Slideshow</span>
+          </motion.button>
         </motion.div>
 
         {/* Photo Categories */}
@@ -248,6 +337,174 @@ const ClientPortfolio = () => {
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-400 text-sm">
               Click outside to close • Use zoom buttons to adjust size
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Cinematic Slideshow Modal */}
+      <AnimatePresence>
+        {isSlideshow && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onMouseMove={handleMouseMove}
+            className="fixed inset-0 z-50 bg-black flex items-center justify-center cursor-none"
+            style={{ cursor: showControls ? 'default' : 'none' }}
+          >
+            {/* Controls - Show/Hide on Mouse Movement */}
+            <AnimatePresence>
+              {showControls && (
+                <>
+                  {/* Close Button */}
+                  <motion.button
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => {
+                      setIsSlideshow(false);
+                      setIsPlaying(false);
+                    }}
+                    className="absolute top-6 right-6 p-4 bg-charcoal/80 text-gold rounded-lg hover:bg-charcoal transition-colors z-10"
+                  >
+                    <HiX className="text-3xl" />
+                  </motion.button>
+
+                  {/* Progress Bar */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute top-0 left-0 right-0 h-1 bg-charcoal/50 z-10"
+                  >
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-gold to-cinematic-orange"
+                      initial={{ width: '0%' }}
+                      animate={{ width: `${((slideshowIndex + 1) / allPhotos.length) * 100}%` }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
+
+                  {/* Photo Counter */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute top-6 left-6 px-4 py-2 bg-charcoal/80 text-gold rounded-lg z-10"
+                  >
+                    <span className="font-semibold">{slideshowIndex + 1} / {allPhotos.length}</span>
+                  </motion.div>
+
+                  {/* Category Label */}
+                  <motion.div
+                    key={`label-${slideshowIndex}`}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute top-20 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-charcoal/80 rounded-lg z-10"
+                  >
+                    <p className="text-gold font-semibold">{allPhotos[slideshowIndex]?.categoryTitle}</p>
+                    <p className="text-gray-400 text-sm text-center">Photo {allPhotos[slideshowIndex]?.photoIndex + 1}</p>
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
+
+            {/* Main Image - Full Screen */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={slideshowIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                {/* Full-screen image container */}
+                <div className="relative w-full h-full">
+                  {/* Placeholder for actual slideshow image - will cover full screen */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold/30 to-cinematic-orange/30">
+                    {/* This will be replaced with: <img src={actualImagePath} className="w-full h-full object-contain" alt="" /> */}
+                    {/* No placeholder text - clean full-screen image experience */}
+                  </div>
+
+                  {/* Cinematic Vignette */}
+                  <div className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: 'radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.6) 100%)'
+                    }}
+                  />
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Controls - Show/Hide on Mouse Movement */}
+            <AnimatePresence>
+              {showControls && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent z-10"
+                >
+                  <div className="max-w-2xl mx-auto flex items-center justify-center gap-4">
+                    {/* Previous Button */}
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={handlePrevSlide}
+                      className="p-4 bg-charcoal/80 text-gold rounded-lg hover:bg-charcoal transition-colors"
+                    >
+                      <HiChevronLeft className="text-2xl" />
+                    </motion.button>
+
+                    {/* Play/Pause Button */}
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => setIsPlaying(!isPlaying)}
+                      className="p-6 bg-gradient-to-r from-gold to-cinematic-orange text-charcoal rounded-full hover:shadow-lg hover:shadow-gold/50 transition-all"
+                    >
+                      {isPlaying ? (
+                        <HiPause className="text-3xl" />
+                      ) : (
+                        <HiPlay className="text-3xl" />
+                      )}
+                    </motion.button>
+
+                    {/* Next Button */}
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={handleNextSlide}
+                      className="p-4 bg-charcoal/80 text-gold rounded-lg hover:bg-charcoal transition-colors"
+                    >
+                      <HiChevronRight className="text-2xl" />
+                    </motion.button>
+                  </div>
+
+                  {/* Instructions */}
+                  <p className="text-center text-gray-400 text-sm mt-4">
+                    Use arrow keys or buttons to navigate • Press ESC to exit
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Keyboard Navigation */}
+            <div className="hidden" onKeyDown={(e) => {
+              if (e.key === 'ArrowRight') handleNextSlide();
+              if (e.key === 'ArrowLeft') handlePrevSlide();
+              if (e.key === 'Escape') setIsSlideshow(false);
+              if (e.key === ' ') setIsPlaying(!isPlaying);
+            }} />
           </motion.div>
         )}
       </AnimatePresence>

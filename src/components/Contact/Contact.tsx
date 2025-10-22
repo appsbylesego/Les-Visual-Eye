@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { useState, FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import { HiMail, HiLocationMarker } from 'react-icons/hi';
-import emailjs from 'emailjs-com';
+// import emailjs from 'emailjs-com'; // Uncomment when ready to configure EmailJS
 
 // Distance calculation helper (simplified - user will need to configure)
 const calculateDistance = (location: string): number => {
@@ -330,15 +330,18 @@ const Contact = () => {
             </div>
 
             {/* Service Area Info */}
-            <div className="bg-charcoal/50 border border-gold/30 rounded-lg p-6 space-y-4">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="bg-charcoal/50 border border-gold/30 rounded-lg p-6 space-y-4 transition-all duration-300 hover:shadow-lg hover:shadow-gold/20 hover:border-gold/50"
+            >
               <h3 className="font-display text-2xl font-bold text-gold">Service Areas</h3>
               <div className="space-y-2 text-gray-300">
                 <p><span className="text-gold">0-15km:</span> All packages available (R400-R1,200)</p>
                 <p><span className="text-gold">15-50km:</span> Deluxe & Full Experience (R700-R1,200)</p>
                 <p><span className="text-gold">50-60km:</span> Meet Me Halfway option (Travel fee applies)</p>
-                <p><span className="text-gold">Beyond 60km:</span> Currently unavailable</p>
+                <p><span className="text-gold">Beyond 60km:</span> Unavailable</p>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

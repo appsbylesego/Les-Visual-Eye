@@ -8,6 +8,7 @@ Your website now has a complete **Client Gallery System** where visitors can:
 3. Click on a client to view their full 18-photo cinematic session
 4. View photos in categories (Face Close-ups, Walking Shots, etc.)
 5. Click any photo to view full-screen with zoom in/out
+6. **Start Cinematic Slideshow** to auto-play through all 18 photos with beautiful transitions
 
 ---
 

@@ -13,7 +13,7 @@ const packages = [
       '1-hour photoshoot',
       'Guided posing and direction',
       'Professional color grading',
-      '3-day delivery'
+      '3–5 day delivery'
     ],
     description: 'Perfect for portraits, personal branding, or your social aesthetic.',
     gradient: 'from-gold/20 to-cinematic-orange/20'
@@ -42,11 +42,11 @@ const packages = [
     price: 'R1,200',
     tagline: 'Your full story — shot like a film.',
     features: [
-      '50+ edited portraits',
+      '50 edited portraits',
       '2-hour shoot with full creative direction',
       'Cinematic video reel (30–60 seconds)',
       'Multiple outfit changes',
-      'Priority 3-day delivery'
+      'Priority 3-10 day delivery'
     ],
     description: 'Perfect for campaigns, portfolios, or anyone ready for a full cinematic experience.',
     gradient: 'from-gold/30 to-cinematic-orange/30'
