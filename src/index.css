@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-charcoal text-white font-sans antialiased;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(200, 155, 60, 0.5);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(200, 155, 60, 0.3);
+  }
+
+  .cinematic-gradient {
+    background: linear-gradient(135deg, #0A0A0A 0%, #1a1510 50%, #0A0A0A 100%);
+  }
+}
