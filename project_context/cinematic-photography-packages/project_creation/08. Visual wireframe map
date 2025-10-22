@@ -1,0 +1,139 @@
+Let’s create a visual wireframe map — a blueprint of your website layout with labels for images, text, buttons, and animations. This will make it much easier for Claude to generate your site exactly as you envision it.
+
+🗺️ Lesego (Les) Cinematic Photography — Website Wireframe Map
+1️⃣ Hero Section — “Opening Scene”
+======================
+[Full-screen Background Video]
+- Slow-motion reel of Les photographing subjects
+- Golden-hour cinematic lighting
+- Subtle film grain/lens flare
+
+[Centered Text Overlay]
+- Small text: "A Story Told in Every Frame" (fade-in)
+- Large text: "LESEGO PHOTOGRAPHY" (slide-up + golden underline)
+- Tagline: "Cinematic Portraits. Real Emotion. Main Character Energy." (fade-in)
+
+[Buttons]
+- [Book a Shoot]   [View Portfolio]
+- Hover effect: glow/pulse
+
+[Scroll Cue]
+- Animated downward arrow or subtle film strip (looped)
+
+======================
+
+Animation Notes: Fade-in text sequence, buttons animate after tagline, scroll triggers transition to Portfolio.
+======================
+[Section Header]
+- Title: "The Portfolio" (fade-in)
+- Subtext: "Every frame. Every emotion. Every story told through my lens."
+
+[Photo Grid - Masonry Layout]
+- Categories: Cinematic Faces, Golden Hour Moments, Urban Vibes, The Look Back, Motion Frames
+- Hover: slow zoom + light flare + background darkens behind image
+- Click: lightbox gallery with left-right cinematic transitions
+
+[Scroll Animation]
+- Sequential photo fade-in
+- Parallax effect on images
+- Transition into Packages section
+
+======================
+
+3️⃣ Packages Section — “The Experience”
+======================
+[Section Header]
+- Title: "The Cinematic Experience"
+- Subtext: "Choose your story. Every package is crafted to capture your personality with cinematic precision."
+
+[3 Package Cards - Interactive]
+1. Cinematic Bundle — R400
+   - 18 edited photos
+   - 1-hour shoot, color grading, 3-day delivery
+   - Button: [Book This Shoot]
+
+2. Cinematic Deluxe — R700
+   - 30 edited photos, 1.5-hour shoot, video clips, advanced retouching
+   - Button: [Book Deluxe Session]
+
+3. Full Cinematic Experience — R1,200
+   - 50+ photos, 2-hour shoot, cinematic reel, multiple outfits
+   - Button: [Book Full Experience]
+
+[Animations]
+- Cards slide up sequentially
+- Hover: tilt + scale + light leak
+- Buttons glow and pulse
+- Background parallax for cinematic depth
+
+======================
+
+4️⃣ About Les Section — “Meet the Storyteller”
+======================
+[Split-Screen Layout]
+Left Side:
+- Cinematic portrait of Les (slightly desaturated + golden highlight)
+- Subtle parallax zoom on scroll
+
+Right Side:
+- Header: "About Les"
+- Body Text:
+  "I’m Lesego — but you can call me Les.
+  I’m a visual storyteller who turns moments into cinematic experiences.
+  Every photoshoot I do is more than pictures — it’s about emotion, atmosphere, and authenticity.
+  Whether it’s a close-up full of raw feeling or a motion shot with golden-hour light, I focus on creating images that make you feel like the main character of your story.
+  Let’s make your moments unforgettable."
+- Text animation: line-by-line fade-in
+
+======================
+
+5️⃣ Contact / Booking Section — “Take the Lead”
+======================
+[Full-Width Split Layout]
+Left Side: Contact Form
+- Fields: Name, Email/Phone, Message, Package Dropdown
+- Button: "Book Your Session"
+- Form animation: slides in from left, fields fade sequentially
+- Button hover: glow + pulse
+
+Right Side:
+- Cinematic portrait or motion clip of Les photographing
+- Parallax scroll effect
+
+[Background]
+- Dark cinematic gradient with subtle light streaks
+- Soft lens flare/light streak animations
+
+[Subtext]
+- "Ready to step in front of the lens? Choose your package, tell me your vision, and let’s create something unforgettable."
+
+======================
+6️⃣ General Animations / Interactions
+
+Smooth scroll-triggered transitions throughout the site
+
+Parallax layers for depth on photos, portraits, and background elements
+
+Lens flare/light streak animations
+
+Hover effects on buttons and images (zoom, glow, pulse)
+
+Text: fade-in sequences or cinematic typewriter effect
+
+7️⃣ Colors & Typography
+
+Primary: #0A0A0A (dark charcoal)
+
+Secondary: #C89B3C (warm gold)
+
+Accent: #FF6A00 (cinematic orange/red)
+
+Headings: Playfair Display / Cinzel (bold, cinematic)
+
+Body: Inter / Montserrat / Poppins (clean sans-serif)
+
+Buttons: bold sans-serif, slight tracking, cinematic feel
+
+This wireframe gives Claude a visual map + text + animation instructions — essentially a blueprint of each section.
+======================
+

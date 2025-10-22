@@ -1,0 +1,82 @@
+Here’s your Hero Section Script + Animation Breakdown — this will set the tone for your entire site. Think of it as your website’s opening movie trailer. It should grab attention, give emotion, and make people want to scroll.
+
+🎬 Hero Section — “Opening Scene”
+🎥 Visual Concept
+
+- Background: Slow-motion video or cinematic reel of your work — maybe your subject turning toward the camera, camera lens glinting, soft depth-of-field.
+
+- Lighting: Low light with warm orange flares or golden-hour glow.
+
+- Overlay: Slight grain or lens flare effect — gives that “movie frame” energy.
+
+- Music (optional): Deep, slow cinematic instrumental — ambient pads or subtle bass line.
+
+🧭 Layout
+
+Center of screen (fade-in animation, timed like a movie intro):
+
+======================
+[small text fades in first]
+A Story Told in Every Frame
+
+[then large cinematic text slides up slowly]
+LES EGO PHOTOGRAPHY
+
+[fade-in line under logo]
+Cinematic Portraits. Real Emotion. Main Character Energy.
+
+[buttons appear with smooth camera-pan motion]
+[ Book a Shoot ]   [ View Portfolio ]
+
+======================
+Scroll cue:
+A small animated downward arrow or film strip that moves slowly, inviting the user to scroll —
+→ as they scroll, the hero video fades and the “About Les” or “Portfolio” section rises up with parallax movement.
+
+
+⚙️ Animation Timeline (Claude Context)
+
+1. 0–1s: Page fades from black, faint film grain appears.
+
+2. 1–2s: “A Story Told in Every Frame” fades in, slight glow.
+
+3. 2–4s: “LESEGO PHOTOGRAPHY” text slides up, golden cinematic highlight underlines it.
+
+4. 4–5s: Tagline appears with soft typewriter effect.
+
+5. 5–6s: Buttons fade in with motion blur + hover effects (light pulse).
+
+6. 6–7s: Scroll arrow bounces slowly, looped animation.
+
+7. Scroll: Background transitions into next section with a cinematic zoom-out effect.
+
+💬 Copywriting Tone Suggestions
+
+You can rotate or A/B test these for your tagline (Claude can animate them as changing captions):
+
+- “Every shot, a story.”
+
+- “You. The lens. The moment.”
+
+- “Main character energy only.”
+
+- “Cinematic portraits that feel alive.”
+
+
+🧠 Claude Prompt Summary
+
+Build a hero section for Lesego (Les), a male cinematic photographer.
+The hero should feel like a movie opening — dark, emotional, and elegant.
+Include:
+
+Background video (slow-motion reel of portraits or golden-hour b-roll)
+
+Text animation sequence (fade-in, slide-up, glow effects)
+
+Tagline: “Cinematic Portraits. Real Emotion. Main Character Energy.”
+
+Two buttons: “Book a Shoot” and “View Portfolio”
+
+Smooth scroll cue animation leading into the next section
+
+All transitions should feel like a film cut — soft, fluid, and cinematic

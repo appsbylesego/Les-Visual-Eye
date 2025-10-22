@@ -1,0 +1,216 @@
+Here’s a full “Claude context package” for your cinematic photography website. This document compiles all sections, animations, colors, fonts, copy, transitions, and effects so Claude can generate your site exactly how you want it — cinematic, interactive, and high-converting.
+
+🎥 LES VISUAL EYE — Full Website Context for Claude
+🖌️ Brand Identity
+
+- Name: Lesego (Les)
+
+- Gender: Male
+
+- Style: Cinematic Portrait & Lifestyle Photographer
+
+- Mood / Vibe: Movie-scene energy, main-character focus, atmospheric, storytelling through visuals
+
+- Target Audience: Young adults, creatives, models, content creators, anyone who wants cinematic-quality photos
+
+- Personality: Calm, confident, creative, approachable, professional
+
+🎨 Visual Theme
+
+- Overall Style: Dark, cinematic, immersive, smooth scrolling animations
+
+- Primary Color: Deep charcoal (#0A0A0A)
+
+- Secondary Color: Warm gold (#C89B3C)
+
+- Accent Color: Deep orange/red (#FF6A00)
+
+- Typography:
+
+- Headlines: Bold cinematic serif (Playfair Display, Cinzel)
+
+- Body Text: Clean sans-serif (Inter, Montserrat, Poppins)
+
+- Lighting / Effects:
+
+- Soft gradients, lens flares, subtle glow highlights
+
+- Cinematic depth with parallax layers
+
+- Light streaks and motion blur for transitions
+
+🧭 Website Structure & Sections
+1️⃣ Hero Section — “Opening Scene”
+
+- Background: Slow-motion reel of you photographing subjects, golden-hour lighting, cinematic bokeh
+
+- Text Animation Sequence:
+
+1. Small text: “A Story Told in Every Frame” (fade in)
+
+2. Large text: “LESEGO PHOTOGRAPHY” (slide up, golden underline)
+
+3. Tagline: “Cinematic Portraits. Real Emotion. Main Character Energy.” (fade-in)
+
+4. Buttons: [Book a Shoot] [View Portfolio] (fade in, hover pulse)
+
+- Scroll cue: Animated downward arrow or subtle film strip
+
+- Transition to Portfolio: Hero video fades, next section parallax scrolls up
+
+2️⃣ Portfolio Section — “The Story Unfolds”
+
+- Header:
+
+- Title: “The Portfolio”
+
+- Subtext: “Every frame. Every emotion. Every story told through my lens.”
+
+- Layout: Masonry-style cinematic grid with hover zoom + light flare effects
+
+- Categories:
+
+- Cinematic Faces
+
+- Golden Hour Moments
+
+- Urban Vibes
+
+- The Look Back
+
+- Motion Frames
+
+- Animations:
+
+- Fade-in photos on scroll, sequentially
+
+- Hover: slow zoom + soft glow + background darkens behind image
+
+- Lightbox gallery with smooth left-right cinematic transitions
+
+- Transition to Packages: Parallax fade / cinematic zoom-out
+
+3️⃣ Packages Section — “The Experience”
+
+- Header: “The Cinematic Experience”
+
+- Subtext: “Choose your story. Every package is crafted to capture your personality with cinematic precision.”
+
+- Layout: Three animated interactive cards
+
+- Packages:
+
+- Cinematic Bundle — R400: 18 edited photos, 1-hour shoot, color grading, 3-day delivery
+
+- Cinematic Deluxe — R700: 30 edited photos, 1.5-hour shoot, short video clips, advanced retouching, 3–5 day delivery
+
+- Full Cinematic Experience — R1,200: 50+ photos, 2-hour shoot, cinematic reel 30–60s, multiple outfits, priority delivery
+
+- Animations:
+
+- Cards slide up sequentially
+
+- Hover: tilt, scale up, light leak effect
+
+- Button: glow pulse effect
+
+4️⃣ About Les Section — “Meet the Storyteller”
+
+- Layout: Split-screen
+
+- Left: Cinematic portrait of Lesego (slightly desaturated, golden highlight)
+
+- Right: Text introduction
+
+- Text:
+======================
+About Les
+
+I’m Lesego — but you can call me Les. 
+I’m a visual storyteller who turns moments into cinematic experiences. 
+Every photoshoot I do is more than pictures — it’s about emotion, atmosphere, and authenticity. 
+
+Whether it’s a close-up full of raw feeling or a motion shot with golden-hour light, I focus on creating images that make you feel like the main character of your story. 
+
+Let’s make your moments unforgettable.
+======================
+
+- Animations:
+
+- Portrait zooms slightly on scroll
+
+- Text fades in line by line
+
+- Background gradient shifts from charcoal to warm gold
+
+5️⃣ Contact / Booking Section — “Take the Lead”
+
+- Layout: Full-width, split
+
+- Left: Contact form
+
+- Right: Cinematic portrait or motion clip of Les photographing
+
+- Form Fields: Name, Email/Phone, Message, Package dropdown
+
+- Button: “Book Your Session” (glow + pulse)
+
+- Animations:
+
+- Form slides in from left
+
+- Input fields fade in sequentially
+
+- ackground: dark cinematic gradient with subtle light streaks
+
+- Side portrait parallax scroll effect
+
+🎞️ Animations & Interactions
+
+- Smooth scroll-triggered transitions throughout the site
+
+- Parallax layers for depth on photos, portraits, and background elements
+
+- Subtle lens flare / light streak animations
+
+- Buttons: glow pulse on hover
+
+- Images: zoom-in on hover with soft glow
+
+- Text: sequential fade-in or typewriter effect
+
+💬 Copywriting Tone
+
+- Confident, cinematic, storytelling, main-character energy
+
+- Short, punchy lines for headings
+
+- Longer cinematic storytelling for About and Packages
+
+- Calls-to-action clear and cinematic: “Book Your Session,” “View Portfolio,” “Step Into Your Story”
+
+🖌️ Color Palette
+
+- Primary: #0A0A0A (dark charcoal)
+
+- Secondary: #C89B3C (warm gold)
+
+- Accent: #FF6A00 (cinematic orange/red)
+
+- Text: White (#FFFFFF) for headings, light gray (#DDDDDD) for body
+
+🖋️ Typography
+
+- Headings: Playfair Display or Cinzel (bold, cinematic)
+
+- Body: Inter, Montserrat, or Poppins (clean sans-serif)
+
+- Buttons: Bold sans-serif, slight tracking for cinematic feel
+
+✅ Final Notes for Claude
+
+Build a fully cinematic photography website for Lesego (Les) with 5 sections: Hero, Portfolio, Packages, About, Contact.
+Include all animations, parallax, cinematic transitions, hover effects, text sequences, and glowing buttons as described.
+Use dark cinematic colors with gold/amber accents.
+Tone: confident, cinematic, main-character energy.
+Layout: modern, clean, immersive, scroll-triggered cinematic storytelling.

@@ -1,0 +1,152 @@
+Let’s build your creative direction + full context guide for Claude (so it knows the vibe, layout, and aesthetic when it builds your site).
+This will include:
+
+🎨 The visual theme & style
+
+🧭 Page structure & tabs
+
+⚙️ Animations and transitions
+
+🖋️ Tone of your copywriting
+
+📸 Integration of your bundles & work
+
+💡 Optional extras (contact, booking, testimonials, etc.)
+
+🎬 Cinematic Photography Portfolio — by Lesego (Les)
+⚡️ Brand Identity
+
+- Name: LES VISUAL EYE
+
+- Style: Cinematic Portrait & Lifestyle Photographer
+
+- Personality: Calm, confident, creative, detail-driven
+
+- Mood: Movie scene energy — deep tones, emotion, storytelling through visuals
+
+- Target audience: Young adults, creatives, content creators, models, and people who want to look main-character level amazing
+
+🎨 Visual & Aesthetic Theme
+
+Overall vibe:
+
+- Think Netflix meets Vogue — dark backgrounds, glowing accents, and smooth motion.
+
+- Colors:
+
+- Primary: Deep charcoal (#0A0A0A) or rich dark grey
+
+- Secondary: Warm gold (#C89B3C) or soft amber highlights
+
+- Accent: Deep red or cinematic orange (#FF6A00)
+
+- Typography:
+
+- Headlines: Bold, cinematic serif (like Playfair Display or Cinzel)
+
+- Body text: Clean sans-serif (like Inter, Montserrat, or Poppins)
+
+- Lighting vibe:
+
+- Use background gradients, glow effects, and parallax layers that move as the user scrolls (gives that movie depth feeling).
+
+- Animations:
+
+- Smooth fade-ins, lens flares, light leaks when switching sections.
+
+- Subtle camera pan effects when hovering over images.
+
+- Use motion blur or parallax scrolls for transitions.
+
+🧭 Site Structure & Tabs
+1. Home
+
+- Hero section: Full-screen video background or slow-motion clip (you shooting, adjusting camera, subject posing).
+
+- Text overlay:
+
+- “Every frame tells a story — let’s create yours.”
+
+- Button: “Book Your Shoot”
+
+- Button: “View My Work”
+
+Scroll animation: fades into the next section with lens-flare transitions.
+
+2. Portfolio
+
+- Cinematic grid layout with hover effects.
+
+- Each photo slightly zooms in on hover, revealing the title (e.g. Cinematic Faces, Golden Hour, Urban Motion).
+
+- Categories tabs at top:
+
+- Portraits
+
+- Lifestyle
+
+- Motion Shots
+
+- Behind the Scenes
+
+Clicking opens a lightbox-style viewer with smooth transitions.
+
+3. Packages
+
+- Showcase your Cinematic Bundle, Deluxe, and Full Experience as animated cards that reveal details when hovered.
+
+- Parallax scroll showing before/after edits as a sliding reveal (this looks incredible).
+
+- Include a “Book Now” or “Contact Me” button at the bottom.
+
+4. About Les
+
+- Half black, half cinematic portrait of you (split-screen design).
+
+- Text example:
+
+“I’m Les — a visual storyteller who turns moments into movie scenes. Every shoot I do is about emotion, atmosphere, and authenticity.”
+
+- Add animation: as the user scrolls, your text fades in line by line like movie credits.
+
+5. Contact / Booking
+
+- Smooth fade background with a soft cinematic blur.
+
+- Contact form integrated with your email.
+
+- Include quick links: Instagram | WhatsApp | TikTok
+
+- Button animation: subtle camera flash when hovered.
+
+🎞️ Extra Features
+
+- Scroll-triggered transitions: each section enters like a movie scene cut.
+
+- Music option: optional ambient background track (cinematic instrumental).
+
+- Cursor animation: glowing trail or cinematic focus ripple.
+
+- Loading animation: your logo “LES” fades in like a film intro before the site appears.
+
+- Booking integration: calendar or Google Form styled to match your theme.
+
+🖋️ Copywriting Tone
+
+Confident but cinematic.
+
+- Write like a storyteller, not a salesman.
+
+- Use short cinematic phrases:
+
+- “Every shot, a story.”
+
+- “You. The lens. The moment.”
+
+- “Let’s create something that feels like film.”
+
+- “Main character energy only.”
+
+💡 Summary to give Claude
+
+Build a cinematic, scrolling portfolio website for Lesego (Les) — a male portrait photographer. The theme should feel like a movie experience with smooth animations, parallax effects, and emotional depth. The design must be dark, sleek, and cinematic (black, gold, warm tones). Include pages for Home, Portfolio, Packages, About, and Contact. The text tone should be confident, cinematic, and minimal. Each section should flow like a movie scene, with subtle lighting transitions and smooth motion effects.

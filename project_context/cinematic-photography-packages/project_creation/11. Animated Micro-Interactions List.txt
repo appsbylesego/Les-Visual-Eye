@@ -1,0 +1,96 @@
+Here’s the Animated Micro-Interactions List — all the subtle hover effects, scroll-triggered movements, and cinematic flourishes that will make your website feel alive, immersive, and movie-like. This is the detail level that turns a regular site into a cinematic experience.
+
+✨ Lesego (Les) Cinematic Photography — Micro-Interactions List
+1️⃣ Hero Section
+
+- Text Fade-In Sequence: Small text → Large text → Tagline
+
+- Buttons Hover: Glow + pulse + slight scale-up
+
+- Scroll Cue: Subtle up-and-down bouncing arrow or film-strip motion
+
+- Background Video: Soft parallax movement, slow zoom-in on scroll
+
+- Transition: Hero fades out into Portfolio section with motion blur
+
+2️⃣ Portfolio Section
+
+- Photo Fade-In: Sequential on scroll (0.2s delay between each image)
+
+- Hover on Images:
+
+- Slow zoom-in
+
+- Light flare animation across the image
+
+- Background behind image slightly darkens
+
+- Title overlay slides up
+
+- Click on Image: Lightbox opens with smooth left-right cinematic slide
+
+- Parallax: Images move subtly at different scroll speeds for depth
+
+3️⃣ Packages Section
+
+- Cards Entrance: Slide up sequentially with slight delay
+
+- Card Hover:
+
+- Slight tilt (3–5°)
+
+- Scale-up 1.05x
+
+- Soft glowing light leak animation
+
+- Buttons: Glow and pulse slowly
+
+- Background: Subtle parallax shift when scrolling
+
+- Scroll Trigger: Cards fade out smoothly when transitioning to About section
+
+4️⃣ About Les Section
+
+- Portrait Animation: Slight parallax zoom-in as user scrolls
+
+- Text Animation: Line-by-line fade-in with upward motion
+
+- Hover on Portrait: Slight brightness increase + soft cinematic glow
+
+- Background Gradient: Gradual shift from dark charcoal → warm gold as scroll progresses
+
+5️⃣ Contact / Booking Section
+
+- Form Entrance: Slide in from left
+
+- Input Fields: Fade in sequentially
+
+- Button Hover: Glow + slow pulse + subtle scale-up
+
+- Side Portrait / Motion Clip: Parallax scroll effect, small lateral movement for depth
+
+- Background Effects: Soft light streaks, lens flare animations
+
+- Scroll Exit: Section fades smoothly to the bottom or next page (if multi-page design)
+
+6️⃣ Global Micro-Interactions
+
+- Scroll-Triggered Animations: Subtle depth changes on sections, slight parallax for photos and text
+
+- Hover Effects: Buttons, cards, and images have soft glow + scale animations
+
+- Light Leaks / Lens Flares: Move across images/cards periodically to mimic cinematic lighting
+
+- Text Animations: Fade-in, slide-up, or typewriter effect for headings/subtext
+
+- Cursor Animation (optional): Glowing trail or ripple effect on hover for cinematic flair
+
+✅ Purpose
+
+- These micro-interactions ensure that:
+
+- The site feels cinematic and immersive
+
+- Scrolls and hovers are visually satisfying
+
+- Visitors get a “movie scene” experience, encouraging them to book or explore more

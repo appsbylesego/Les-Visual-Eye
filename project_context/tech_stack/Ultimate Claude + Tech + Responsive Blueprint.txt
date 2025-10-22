@@ -1,0 +1,216 @@
+here’s your Ultimate Claude + Tech + Responsive Blueprint. This is a master document combining all sections, copy, animations, micro-interactions, responsive behavior, email-only contact, and tech stack — ready to hand directly to Claude to build your cinematic website.
+
+🎥 Ultimate Claude + Tech + Responsive Blueprint
+
+Lesego (Les) — Cinematic Photography Website
+
+1️⃣ Brand Identity
+
+Name: Lesego (Les)
+
+Gender: Male
+
+Style: Cinematic portrait & lifestyle photography
+
+Mood/Vibe: Movie-scene energy, main-character focus, emotional storytelling
+
+Target Audience: Young adults, creatives, models, content creators
+
+Personality: Confident, artistic, professional, approachable
+
+2️⃣ Visual Theme
+
+Colors:
+
+Primary: #0A0A0A (dark charcoal)
+
+Secondary: #C89B3C (warm gold)
+
+Accent: #FF6A00 (cinematic orange/red)
+
+Typography:
+
+Headings: Playfair Display / Cinzel (bold, cinematic)
+
+Body: Inter / Montserrat / Poppins (clean sans-serif)
+
+Lighting/Effects: Soft gradients, lens flares, glow highlights, parallax layers, cinematic depth
+
+3️⃣ Tech Stack
+
+Frontend: React + Vite
+
+Styling/UI: TailwindCSS, Framer Motion, ShadCN / Headless UI for tabs/modals
+
+Optional Animation Enhancements: GSAP (for complex scroll triggers), React-Lottie (animated icons)
+
+Form / Backend: Email-only contact via Formspree / EmailJS / Netlify Forms
+
+Hosting: Vercel (fast, global CDN, easy deployment)
+
+Media Optimization: Cloudinary or Imgix for responsive images/video
+
+4️⃣ Sections & Layout
+Hero Section — “Opening Scene”
+
+Full-screen cinematic video (fallback image for mobile)
+
+Text animation sequence: small text → large title → tagline (fade-in / slide-up)
+
+Buttons: [Book a Shoot] [View Portfolio] (glow + pulse)
+
+Scroll cue: animated arrow/film strip
+
+Responsive Behavior:
+
+Desktop: full-screen video, centered text/buttons
+
+Tablet: scaled video, buttons stacked
+
+Mobile: static hero image, text centered, buttons stacked, scroll cue optional
+
+Animation Notes: Framer Motion fade-in, parallax zoom, tap-friendly buttons
+
+Portfolio Section — “The Story Unfolds”
+
+Masonry grid (Cinematic Faces, Golden Hour, Urban Vibes, The Look Back, Motion Frames)
+
+Hover / tap: zoom + glow, background darkens, lightbox click animation
+
+Responsive:
+
+Desktop: 4 columns, sequential fade-in
+
+Tablet: 2–3 columns, tap hover effects
+
+Mobile: 1–2 columns, tap to open lightbox, subtle parallax
+
+Lazy-load images for performance
+
+Packages Section — “The Experience”
+
+Three packages:
+
+Cinematic Bundle — R400 (18 photos, 1h shoot)
+
+Cinematic Deluxe — R700 (30 photos, 1.5h shoot + video clips)
+
+Full Cinematic Experience — R1,200 (50+ photos, 2h shoot + cinematic reel)
+
+Card animations: slide-up sequentially, hover tilt + scale + light leak
+
+Responsive:
+
+Desktop: 3 horizontal cards
+
+Tablet: 2 cards per row
+
+Mobile: stacked vertical cards with tap-friendly buttons
+
+About Les Section — “Meet the Storyteller”
+
+Split-screen desktop (portrait left, text right)
+
+Portrait parallax zoom, text line-by-line fade-in
+
+Responsive:
+
+Tablet: split-screen or stacked depending on width
+
+Mobile: stacked portrait above text, parallax subtle
+
+Text example:
+======================
+I’m Lesego — but you can call me Les.
+I turn moments into cinematic experiences.
+Every shoot captures emotion, atmosphere, and authenticity.
+Whether it’s a close-up full of raw feeling or a motion shot with golden-hour light, I focus on creating images that make you feel like the main character of your story.
+Let’s make your moments unforgettable.
+======================
+
+Contact / Booking Section — “Take the Lead”
+
+Email-only contact form: Name, Email (required), Message, Package dropdown
+
+CTA Button: “Send Message / Book Your Session” (glow + pulse)
+
+Right-side portrait / motion clip (parallax)
+
+Responsive:
+
+Desktop: split-screen
+
+Tablet: stacked form above portrait
+
+Mobile: form full-width, portrait below or optional
+
+Animation Notes: Form slides in from left, tap-friendly buttons, minimal parallax on mobile
+
+5️⃣ Global Micro-Interactions
+
+Smooth scroll-triggered transitions (Framer Motion)
+
+Parallax layers for images, portraits, and backgrounds
+
+Lens flare/light streak animations
+
+Text: fade-in, slide-up, typewriter effects
+
+Buttons: hover glow + pulse
+
+Images hover: slow zoom + soft glow
+
+Mobile fallback: hover effects replaced by tap interactions
+
+6️⃣ Scroll Flow
+======================
+Hero → Portfolio → Packages → About → Contact
+======================
+
+Each section has entry animations and smooth exit transitions
+
+Tap-friendly interactions for mobile
+
+Parallax and scroll effects optimized for desktop/tablet/mobile
+
+7️⃣ Responsive Considerations
+
+Tailwind responsive utilities (sm:, md:, lg:, xl:)
+
+Typography: responsive font sizes and spacing
+
+Lazy-load media for performance
+
+Hamburger menu for mobile
+
+Buttons and input fields large enough for tap (44px min height)
+
+8️⃣ Safety / Email-Only Booking
+
+No phone numbers displayed
+
+Optional auto-responder confirming receipt
+
+Optional file upload field for reference images
+
+Clear instructions:
+
+“For your safety, all communication is via email. We’ll respond promptly to confirm your session.”
+
+✅ Summary
+
+This blueprint combines:
+
+All site sections + layouts
+
+Copy / text content
+
+Animations & micro-interactions
+
+Responsive behavior for web + mobile
+
+Email-only contact
+
+Tech stack recommendations
+
+It’s ready for Claude to generate your cinematic website with minimal adjustments.

@@ -1,0 +1,156 @@
+Here’s your Ultimate Claude Website Blueprint — a single comprehensive document containing everything Claude needs to build your cinematic website exactly as envisioned. It includes sections, copy, colors, fonts, animations, micro-interactions, and scroll flow.
+
+🎥 Ultimate Claude Website Blueprint — LES VISUAL EYE
+
+- Name: Lesego (Les)
+
+- Gender: Male
+
+- Style: Cinematic portrait & lifestyle photography
+
+- Mood / Vibe: Movie-scene energy, main-character focus, atmospheric storytelling
+
+- Target Audience: Young adults, creatives, models, content creators
+
+- Personality: Calm, confident, creative, approachable, professional
+
+Visual Theme
+
+- Colors:
+
+- Primary: #0A0A0A (dark charcoal)
+
+- Secondary: #C89B3C (warm gold)
+
+- Accent: #FF6A00 (cinematic orange/red)
+
+- Typography:
+
+- Headlines: Playfair Display / Cinzel (bold, cinematic)
+
+- Body: Inter / Montserrat / Poppins (clean sans-serif)
+
+- ighting / Effects: Soft gradients, lens flares, glow highlights, cinematic depth, parallax layers
+
+Site Structure & Sections
+1️⃣ Hero Section — “Opening Scene”
+
+- Background: Full-screen slow-motion video of Les photographing subjects, golden-hour lighting, subtle lens flare
+
+- Text Animation:
+
+1. Small: "A Story Told in Every Frame" (fade-in)
+
+2. Large: "LESEGO PHOTOGRAPHY" (slide-up + gold underline)
+
+3. Tagline: "Cinematic Portraits. Real Emotion. Main Character Energy." (fade-in)
+
+- Buttons: [Book a Shoot] [View Portfolio] (hover glow + pulse)
+
+- Scroll Cue: Animated downward arrow or film strip
+
+- Transition: Fade out → Portfolio section
+
+2️⃣ Portfolio Section — “The Story Unfolds”
+
+- Header: “The Portfolio” + subtext
+
+- Layout: Masonry grid with categories: Cinematic Faces, Golden Hour, Urban Vibes, The Look Back, Motion Frames
+
+- Animations:
+
+- Sequential photo fade-in on scroll
+
+- Hover: slow zoom, soft glow/light flare, background darkens
+
+- Click: lightbox gallery with cinematic slide transitions
+
+- Transition: Parallax fade → Packages
+
+3️⃣ Packages Section — “The Experience”
+
+- Header: “The Cinematic Experience” + subtext
+
+- Packages & Pricing Cards:
+
+1. Cinematic Bundle — R400: 18 edited photos, 1h shoot, color grading, 3-day delivery
+
+2. Cinematic Deluxe — R700: 30 edited photos, 1.5h shoot, short cinematic video clips, advanced retouching, 3–5 day delivery
+
+3. Full Cinematic Experience — R1,200: 50+ photos, 2h shoot, cinematic reel, multiple outfits, priority delivery
+
+- Animations:
+
+- Cards slide up sequentially
+
+- Hover: tilt + scale + light leak
+
+- Buttons: glow + pulse
+
+- Background parallax
+
+4️⃣ About Les Section — “Meet the Storyteller”
+
+- Layout: Split-screen
+
+- Left: Cinematic portrait (parallax zoom on scroll, slight golden highlight)
+
+- Right: Text (line-by-line fade-in)
+
+- Text:
+
+I’m Lesego — but you can call me Les.
+I turn moments into cinematic experiences.
+Every shoot captures emotion, atmosphere, and authenticity.
+Whether it’s a close-up full of raw feeling or a motion shot with golden-hour light, I focus on creating images that make you feel like the main character of your story.
+Let’s make your moments unforgettable.
+
+
+- Transition: Scroll → Contact section
+
+5️⃣ Contact / Booking Section — “Take the Lead”
+
+- Layout: Full-width split
+
+- Left: Contact form (Name, Email/Phone, Message, Package dropdown)
+
+- Right: Cinematic portrait or motion clip (parallax)
+
+- Button: “Book Your Session” (glow + pulse)
+
+- Background: Dark gradient with subtle light streaks
+
+- Subtext: “Ready to step in front of the lens? Choose your package, tell me your vision, and let’s create something unforgettable.”
+
+Global Micro-Interactions & Animations
+
+- Smooth scroll-triggered transitions for all sections
+
+- Parallax layers for photos, portraits, backgrounds
+
+- Lens flare / light streak animations
+
+- Text: fade-in, slide-up, or typewriter effect
+
+- Buttons hover glow + pulse
+
+- Images hover: slow zoom + soft light flare
+
+- Hero and portfolio: subtle camera dolly / parallax motion
+
+Scroll Flow
+Hero → Portfolio → Packages → About → Contact
+
+
+- Each section has entry animations and smooth exit transitions
+
+- Hover interactions for buttons and images included
+
+Notes for Claude
+
+Build a fully cinematic, immersive website for Lesego (Les) using the above blueprint.
+Include all sections, copy, colors, fonts, animations, micro-interactions, and scroll flow.
+Layout should feel like a cinematic story unfolding as the user scrolls.
+Ensure all transitions, hover effects, and parallax elements are applied consistently.
+
+Les, this Ultimate Claude Website Blueprint combines everything we’ve mapped: hero, portfolio, packages, about, contact, micro-interactions, colors, fonts, copy, and scroll flow — ready for Claude to generate your fully cinematic website.

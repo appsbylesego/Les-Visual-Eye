@@ -1,0 +1,61 @@
+Let’s build the About Les Section — this is where your personality shines, and visitors connect with you, not just your photos. The goal is cinematic storytelling that makes people trust you and feel inspired to book.
+
+👤 About Les Section — “Meet the Storyteller”
+🎥 Transition from Packages
+
+- As the user scrolls down, the package cards fade out.
+
+- A subtle parallax swipe moves a full-screen cinematic portrait of you from left to center.
+
+- The background gradient shifts from dark charcoal to a soft warm gold highlight behind the text area.
+
+- Optional: A slow lens flare or moving light streak to give that “movie set” feel.
+
+🧭 Layout Concept
+
+Split-screen design:
+
+- Left side: Large cinematic portrait of you (Les), slightly desaturated with a subtle golden highlight.
+
+- Right side: Your story and personality in text.
+
+Optional scroll animations:
+
+- As user scrolls, portrait slightly zooms in.
+
+- Text lines fade in individually with a typewriter or cinematic fade effect.
+
+💬 Text Copy Example
+Header (bold, cinematic serif)
+
+About Les
+
+======================
+Body Text
+
+I’m Lesego — but you can call me Les. 
+I’m a visual storyteller who turns moments into cinematic experiences. 
+Every photoshoot I do is more than pictures — it’s about emotion, atmosphere, and authenticity. 
+
+Whether it’s a close-up full of raw feeling or a motion shot with golden-hour light, I focus on creating images that make you feel like the main character of your story. 
+
+Let’s make your moments unforgettable.
+
+======================
+⚡️ Design & Animation Details
+
+- Text animation: Lines appear sequentially, fading in with slight upward motion.
+
+- Image animation: Slight parallax zoom as you scroll.
+
+- Background: Gradient fade from charcoal to warm gold.
+
+- Interactive detail: Hovering over your portrait subtly brightens it with a cinematic glow.
+
+🧠 Claude Prompt Summary
+
+Create an “About” section for Lesego (Les) — male cinematic portrait photographer.
+Layout: split-screen — left side is a large cinematic portrait, right side is text.
+Text should introduce Les, his style, and personality in a confident, cinematic tone.
+Add subtle scroll animations: text fades in line by line, image zooms slightly, background gradient shifts from dark to warm highlight.
+Overall feel: cinematic, storytelling, main-character energy, visually engaging.

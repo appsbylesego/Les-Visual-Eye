@@ -1,0 +1,56 @@
+here’s a Responsive Component + Animation Blueprint for your cinematic site. It shows how each section adapts to desktop, tablet, and mobile, including animations, scroll effects, and layout changes.
+
+🎥 Lesego (Les) Cinematic Photography — Responsive Component & Animation Blueprint
+1️⃣ Hero Section — “Opening Scene”
+Device	Layout	Animation / Effects
+Desktop	Full-screen background video, text centered, buttons side-by-side	Text fade-in sequence, buttons glow/pulse, scroll cue animated arrow
+Tablet	Video scaled, text slightly smaller, buttons stacked vertically	Same fade-in sequence, reduced scale on buttons, scroll cue smaller
+Mobile	Video fallback: static cinematic hero image, text centered, buttons stacked	Text fade-in, buttons pulse on tap, scroll cue optional or subtle
+
+Notes: Hero video object-fit: cover. Min height 100vh. Tap-friendly buttons. Avoid autoplay sound on mobile.
+
+2️⃣ Portfolio Section — “The Story Unfolds”
+Device	Layout	Animation / Effects
+Desktop	Masonry grid, 4 columns	Sequential fade-in on scroll, hover zoom + glow, lightbox slides left/right
+Tablet	2–3 columns	Sequential fade-in, hover effects reduced (tap to activate lightbox)
+Mobile	1–2 columns	Fade-in images, tap to zoom/lightbox, parallax disabled or subtle
+
+Notes: Use responsive images with srcSet. Lazy-load for performance. Hover interactions fallback to tap on touch devices.
+
+3️⃣ Packages Section — “The Experience”
+Device	Layout	Animation / Effects
+Desktop	3 horizontal cards, hover tilt + scale + light leak	Cards slide up sequentially, buttons glow/pulse
+Tablet	2 cards per row	Same slide-up, hover effects optional, touch-friendly
+Mobile	Cards stacked vertically	Slide-up animations on scroll, button tap pulse, tilt replaced by subtle shadow/scale
+
+Notes: Make CTA buttons large for tap. Cards should fill width with padding.
+
+4️⃣ About Les Section — “Meet the Storyteller”
+Device	Layout	Animation / Effects
+Desktop	Split-screen: left image, right text	Portrait parallax zoom, text fade-in line-by-line
+Tablet	Split-screen or stacked depending on screen width	Portrait parallax zoom smaller, text fades in sequentially
+Mobile	Stacked: image above text	Portrait zoom on scroll, text fades in line-by-line, parallax subtle
+
+Notes: Ensure portrait is high-res but optimized. Text readability prioritized.
+
+5️⃣ Contact / Booking Section — “Take the Lead”
+Device	Layout	Animation / Effects
+Desktop	Split: left form, right portrait/motion clip	Form slides in from left, portrait parallax scroll, button glow/pulse
+Tablet	Form stacked above portrait	Same animations, portrait parallax subtle
+Mobile	Form full-width stacked, portrait below or optional	Slide-in form, tap-friendly fields, button glow/pulse, minimal parallax
+
+Notes: Email-only communication. Input fields at least 44px height for touch devices. Optional file upload field for references.
+
+Global Responsive Considerations
+
+Navigation: Sticky navbar, collapsible hamburger menu for mobile/tablet
+
+Animations: Framer Motion or GSAP; on mobile, reduce heavy effects to improve performance
+
+Media: Responsive images, lazy-loading, video fallback on mobile
+
+Buttons / Touch: Large, tap-friendly, glow/pulse animations on touch devices
+
+Performance: Minimize bundle size with Vite, purge unused TailwindCSS classes
+
+This blueprint ensures that every section, animation, and interaction works beautifully on web and mobile, keeping the cinematic experience intact.

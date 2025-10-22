@@ -1,0 +1,79 @@
+🔥 Let’s go, Les — here’s the next scene of your site: the Portfolio Section — designed to flow seamlessly from your cinematic hero.
+This section is where the visitor feels like they’re stepping into your world — scrolling through visual stories instead of just images.
+
+🎞️ Portfolio Section — “The Story Unfolds”
+🎬 Transition from Hero
+
+As the user scrolls down, the hero video slowly fades into black, then reveals your first set of photos.
+A subtle parallax effect makes your images appear layer by layer — like film stills being projected.
+You can add a soft whoosh sound or film reel motion for extra drama (optional).
+
+🧭 Layout Concept
+🖼️ Section Title (centered)
+======================
+[fade in softly, with slight zoom]
+The Portfolio
+
+[thin gold underline animation]
+Every frame. Every emotion. Every story told through my lens.
+======================
+
+💡 Scroll Animation Idea
+
+As the user scrolls:
+
+- Photos fade in one by one with a cinematic zoom effect (slightly moving forward like a camera dolly).
+
+- Each image has soft motion blur on entry.
+
+- Hovering on an image causes a slow zoom-in and light flare across it.
+
+- The page background subtly darkens behind the hovered image (for focus).
+
+🎨 Grid Style
+
+Use a masonry-style grid (like Pinterest but cinematic).
+Each image tile has a short label overlay in white or gold text.
+
+Example Categories:
+
+- Cinematic Faces — Emotional close-ups with intense expression.
+
+- Golden Hour Moments — Warm tones and natural light.
+
+- Urban Vibes — Street portraits, energy, and motion.
+
+- The Look Back — Over-the-shoulder and reflective shots.
+
+- Motion Frames — Walking, movement, and cinematic blur.
+
+Each category should feel like a film chapter — when clicked, it opens a lightbox gallery with smooth left-right transitions (like scrolling through film stills).
+
+⚙️ Animation Flow (Claude Context)
+
+1. Scroll Start: Hero fades into dark overlay → “The Portfolio” text fades in.
+
+2. 0–1s after entry: Background shifts slightly (parallax camera pan).
+
+3. 1–3s: First 3 photos fade in sequentially.
+
+4. Hover: Slow zoom, light leak, name overlay slides up.
+
+5. Click: Full-screen lightbox with black background + arrow navigation.
+
+6. Scroll End: Transition fades into next section — Packages.
+
+💬 Copywriting Text (for top of section)
+
+Every frame I shoot tells a story — cinematic lighting, raw emotion, and atmosphere that pulls you in.
+
+Scroll through my visual stories and see what cinematic photography feels like.
+
+🧠 Claude Prompt Summary
+
+Create a “Portfolio” section that transitions smoothly from the hero section of Lesego’s site.
+The layout should use parallax and fade-in animations for cinematic storytelling.
+Use a dark background with soft gold highlights.
+Include 4–5 categories (Cinematic Faces, Golden Hour Moments, Urban Vibes, The Look Back, Motion Frames).
+Each photo tile should animate on scroll and zoom slightly on hover.
+The section should flow into the next scene — “Packages.”

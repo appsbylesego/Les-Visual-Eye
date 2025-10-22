@@ -1,0 +1,124 @@
+Let’s create a scroll map storyboard — a visual flow showing your website from top to bottom, including sections, animations, and transitions. Think of it like a cinematic storyboard for your site — this will make it crystal clear for Claude how everything should move and feel.
+
+🎞️ Lesego (Les) Cinematic Photography — Scroll Map Storyboard
+
+======================
+[Top of Page → Bottom of Page]
+
+======================
+
+1️⃣ Hero Section — “Opening Scene”
+
+- Full-screen background video: Slow-motion reel of Les photographing subjects, golden-hour cinematic lighting, soft lens flare
+
+- Text animation sequence:
+
+- Small text: "A Story Told in Every Frame" (fade-in)
+
+- Large text: "LESEGO PHOTOGRAPHY" (slide-up + golden underline)
+
+- Tagline: "Cinematic Portraits. Real Emotion. Main Character Energy." (fade-in)
+
+- Buttons: [Book a Shoot] [View Portfolio] (hover glow + pulse)
+
+- Scroll cue: Animated downward arrow/film strip
+
+- Transition: Hero fades out, Portfolio scrolls in parallax
+
+2️⃣ Portfolio Section — “The Story Unfolds”
+
+- Header: “The Portfolio” + subtext
+
+- Masonry-style grid with 5 categories (Cinematic Faces, Golden Hour, Urban Vibes, The Look Back, Motion Frames)
+
+- Animations:
+
+- Photos fade in sequentially as user scrolls
+
+- Hover: slow zoom + soft light flare + background darkens
+
+- Click: lightbox gallery with smooth left-right cinematic transitions
+
+- Transition: Parallax fade → Packages section
+
+3️⃣ Packages Section — “The Experience”
+
+- Header: “The Cinematic Experience” + subtext
+
+- 3 interactive cards: Bundle (R400), Deluxe (R700), Full Experience (R1,200)
+
+- Animations:
+
+- Cards slide up sequentially
+
+- Hover: tilt + scale + light leak
+
+- Button: glow + pulse
+
+- Transition: Cards fade → About section scrolls in
+
+4️⃣ About Les Section — “Meet the Storyteller”
+
+- Split-screen layout:
+
+- Left: cinematic portrait of Les (parallax zoom on scroll)
+
+- Right: text introduction (line-by-line fade-in)
+
+Text example:
+
+======================
+I’m Lesego — but you can call me Les.
+I turn moments into cinematic experiences.
+Every shoot captures emotion, atmosphere, and authenticity.
+Let’s make your moments unforgettable.
+
+======================
+Transition: Scroll triggers portrait → Contact section
+
+5️⃣ Contact / Booking Section — “Take the Lead”
+
+- Full-width split:
+
+- Left: Contact form (slide in from left, fields fade sequentially)
+
+- Right: Cinematic portrait or motion clip of Les photographing (parallax)
+
+- Button: “Book Your Session” (glow + pulse)
+
+- Background: Dark gradient with subtle light streaks
+
+- Subtext: Encourages user to reach out and book
+
+6️⃣ General Scroll Animations
+
+- Smooth scroll throughout the site
+
+- Parallax on images, portraits, and backgrounds
+
+- Lens flare/light streaks during transitions
+
+- Text: fade-in, slide-up, or typewriter effect
+
+- Buttons: hover glow and pulse
+
+7️⃣ Visual Flow Diagram (Conceptual)
+======================
+[Hero Section]
+  ↓ fade out, scroll-trigger
+[Portfolio Section]
+  ↓ parallax scroll
+[Packages Section]
+  ↓ fade/slide up
+[About Les Section]
+  ↓ split-screen parallax
+[Contact / Booking Section]
+
+======================
+- Arrows = scroll-triggered cinematic transitions
+
+- Each section has its own entry animation and exit fade
+
+- Hover interactions for images and buttons are included
+
+This storyboard + wireframe + full Claude context will make your website almost turnkey — cinematic, interactive, and story-driven from top to bottom.

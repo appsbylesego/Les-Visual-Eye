@@ -1,0 +1,117 @@
+Now we’re moving into your Packages Section — the part that turns your visitors from “wow, this looks amazing” into “I want to book this guy right now.”
+This section should feel like a movie trailer lineup — each package card sliding into view with cinematic transitions, depth, and motion.
+
+💼 Packages Section — “The Experience”
+🎥 Transition from Portfolio
+
+As the user scrolls down from the portfolio:
+
+The photos fade out into black, then three golden lines glide in (like a film reel transition).
+
+A soft background track or heartbeat bass note could start here — subtle but emotional.
+
+Then the header text fades in with a slow camera pan effect.
+
+🧭 Section Header
+======================
+[fade in with gold underline animation]
+The Cinematic Experience
+
+[fade-in subtext below]
+Choose your story. Every package is crafted to capture your personality with cinematic precision.
+======================
+
+🎞️ Layout Style: Cinematic Cards
+
+Use three interactive cards — each one should slightly tilt or rise as the user hovers, casting a soft cinematic shadow.
+The background should remain dark (charcoal or black), and the cards should glow subtly in gold or amber around the edges.
+
+Each card appears one by one as you scroll — sliding up with motion blur.
+
+💳 Package Cards
+1️⃣ Cinematic Bundle — R400
+
+🎬 Be the main character.
+Includes:
+
+- 18 fully edited cinematic portraits
+
+- 1-hour photoshoot
+
+- Guided posing and direction
+
+- Professional color grading
+
+- 3-day delivery
+
+💡 Perfect for portraits, personal branding, or your social aesthetic.
+
+🖱️ Button: [ Book This Shoot ] (hover glow animation)
+
+2️⃣ Cinematic Deluxe — R700
+
+🎥 Step into your own movie scene.
+Includes:
+
+- 30 edited cinematic photos
+
+- 1.5-hour session
+
+- Short cinematic video clips (slow motion / motion focus)
+
+- Advanced retouching and color grading
+
+- 3–5 day delivery
+
+💡 For models, artists, and creators who want both photos and cinematic motion.
+
+🖱️ Button: [ Book Deluxe Session ]
+
+3️⃣ Full Cinematic Experience — R1,200
+
+🎞️ Your full story — shot like a film.
+Includes:
+
+- 50+ edited portraits
+
+- 2-hour shoot with full creative direction
+
+- Cinematic video reel (30–60 seconds)
+
+- Multiple outfit changes
+
+- Priority 3-day delivery
+
+💡 Perfect for campaigns, portfolios, or anyone ready for a full cinematic experience.
+
+🖱️ Button: [ Book Full Experience ]
+
+✨ Scroll Animations
+
+- Each package card slides up from the bottom with easing.
+
+- Background shifts slightly (parallax zoom).
+
+- When hovering:
+
+- The card slightly scales up.
+
+- A soft light leak passes over the image area.
+
+- Button glows gold and pulses softly.
+
+💬 Closing Line (beneath cards)
+
+Every session is more than just a shoot — it’s a cinematic story crafted around you.
+
+Ready to take the lead?
+🎥 [ Book Your Session ]
+
+🧠 Claude Prompt Summary
+
+Create a “Packages” section that feels cinematic and interactive.
+Use three animated pricing cards: Cinematic Bundle (R400), Cinematic Deluxe (R700), and Full Cinematic Experience (R1,200).
+Each card should animate in on scroll and glow subtly on hover.
+The background should be dark with gold/amber accents.
+Add a section header “The Cinematic Experience” with a subtext tagline.
+Smooth transition from Portfolio and a clear “Book” button at the end.

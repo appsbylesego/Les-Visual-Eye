@@ -1,0 +1,52 @@
+Got it, Les — that’s smart, especially if you want to keep things professional and safe while still making it easy for clients to reach you. We can design your contact/booking system around email communication only. Here’s how we can structure it:
+
+Safe, Email-Only Contact Approach
+1️⃣ Contact Form
+
+Include only these fields:
+
+Name
+
+Email ✅ (required)
+
+Message / Shoot Details
+
+Package Selection Dropdown (optional)
+
+No phone number field needed.
+
+Make the submit button clear: “Send Message / Book Your Session”.
+
+2️⃣ Email Forwarding / CRM
+
+The form submissions can go to a dedicated business email:
+
+Example: hello@lesvisualeye.com
+
+You could also integrate with Gmail or a free service like Formspree or Google Forms backend if you want automatic email notifications.
+
+Optional: Auto-responder thanking them for contacting you and letting them know you’ll reply within 24–48 hours.
+
+3️⃣ Privacy & Safety Features
+
+Avoid displaying your personal phone number anywhere.
+
+You can include a small line:
+
+“For your safety, all communication is via email. We’ll respond promptly to confirm your session.”
+
+Optional: Use reCAPTCHA on the form to prevent spam.
+
+4️⃣ CTA Text Examples
+
+Header: “Let’s Make Your Story Cinematic”
+
+Subtext: “Email me your vision, select your package, and we’ll craft a cinematic experience together.”
+
+Button: “Send Message / Book Your Session”
+
+5️⃣ Optional Add-On
+
+If you want to allow secure file upload (like reference photos or moodboards), you can add a small file input field in the form — still only via email.
+
+This way, your site stays professional, fully functional for bookings, and your personal number stays private — all communication happens safely over email.
