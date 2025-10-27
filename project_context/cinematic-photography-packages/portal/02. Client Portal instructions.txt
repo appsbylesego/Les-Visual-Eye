@@ -1,0 +1,529 @@
+Nice — let’s build the full, practical blueprint Claude (or a dev) can use to implement the **Cinematic Client Portal** for your site: Google sign-in, bookings, distance-based package availability, “meet me halfway”, queue + waiting list, live chat (WhatsApp-like), and an admin dashboard for you.
+
+I’ll give you:
+
+1. Tech stack & architecture overview
+2. Firestore data model (example documents)
+3. Authentication & roles (client vs admin)
+4. Distance rules & Haversine formula logic (exact code snippet)
+5. Booking flow & queue logic (how items move)
+6. Chat model & realtime behavior (and unread/read states)
+7. Security rules (high-level + small example)
+8. Frontend components & props map (React + Vite + Tailwind + Framer Motion)
+9. Cloud functions / server-side hooks (validation, notifications)
+10. Indexes, deployment notes, and optional extras
+
+Use this as a single “transferable spec” for Claude or your dev.
+
+---
+
+# 1) Tech stack & architecture (recommended)
+
+* Frontend: **React + Vite**
+* Styling & animations: **TailwindCSS** + **Framer Motion**
+* Auth: **Firebase Authentication** (Google Sign-in)
+* DB: **Firebase Firestore** (real-time + queries)
+* Realtime chat: **Firestore** (or Realtime DB) — Firestore is fine for chat at this scale
+* Serverless / logic: **Firebase Cloud Functions** (distance validation, notifications, admin actions)
+* File storage (uploads): **Firebase Storage** or **Cloudinary**
+* Hosting: **Vercel** (frontend) + Firebase hosting (if preferred)
+* Email (transactional): **SendGrid / EmailJS / Firebase Functions + nodemailer**
+
+---
+
+# 2) Firestore data model (collections & example documents)
+
+```
+/users/{uid}
+{
+  uid: string,
+  displayName: "John Doe",
+  email: "john@domain.com",
+  photoURL: "...",
+  role: "client" | "admin",
+  createdAt: timestamp,
+  location: { city: "Pretoria", country:"ZA", lat: -25.746111, lng:28.188056 } // optional
+}
+
+/bookings/{bookingId}
+{
+  id: string,
+  userId: uid,
+  userName: "John Doe",
+  email: "john@domain.com",
+  packageId: "deluxe", // 'bundle' | 'deluxe' | 'full'
+  requestedDate: timestamp | null,
+  createdAt: timestamp,
+  status: "pending" | "queued" | "approved" | "completed" | "cancelled",
+  distanceKm: 23.4,
+  meetHalfway: true | false,
+  meetupLocation: "City Park" | null,
+  notes: "...",
+  queuePosition: number, // optional denormalized field
+  lastUpdated: timestamp
+}
+
+/packages/{packageId}
+{
+  id: 'bundle', title: 'Cinematic Bundle', price: 400, minDistanceKm: 0, maxDistanceKm: 15
+}
+
+/chats/{chatId}            // chatId could be bookingId or "userId_admin"
+{
+  id: string,
+  bookingId: string | null,         // link to booking (optional)
+  participants: [uid_admin, uid_client],
+  lastMessage: "string",
+  lastMessageAt: timestamp,
+  unreadCounts: { uid1: 0, uid2: 2 }
+}
+
+/chats/{chatId}/messages/{messageId}
+{
+  id: string,
+  senderId: uid,
+  text: "Hey Les, I prefer park",
+  createdAt: timestamp,
+  readBy: { uid1: true, uid2: false }, // or array
+  attachments: [ { url: "...", name: "ref.jpg" } ] // optional
+}
+```
+
+**Indexes:** queries on `bookings` by `status`, `createdAt`, `queuePosition` and on `chats` by `lastMessageAt` will need indexing.
+
+---
+
+# 3) Authentication & roles
+
+* Use **Firebase Auth** with Google provider.
+* After first login, create `/users/{uid}` doc. Default `role = "client"`.
+* Admin roles:
+
+  * Option A: maintain a `admins` array in a secure env (or in Firestore `/config/admins`) and check server-side or in security rules.
+  * Option B (preferred): set **custom claims** for admin accounts via a Cloud Function or the Firebase Admin SDK:
+
+    * `auth.setCustomUserClaims(uid, { admin: true })`
+* On frontend, check `user.getIdTokenResult()` to read `claims.admin` and show admin UI.
+
+---
+
+# 4) Distance rules & Haversine (exact JS snippet)
+
+Store your base/studio coordinates as constants (e.g. `BASE_LAT`, `BASE_LNG`). Use Haversine to compute km:
+
+```js
+// Haversine formula (returns distance in km)
+function toRad(deg){ return deg * Math.PI / 180; }
+
+function haversineDistanceKm(lat1, lng1, lat2, lng2){
+  const R = 6371; // Earth's radius in km
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
+}
+```
+
+**Where to get client coords:**
+
+* Preferred: client enters city / postal code → use a Geocoding API (Mapbox, Google Geocode) to convert to lat/lng.
+* Simpler: client selects city from dropdown mapped to coordinates (less precise but private).
+
+**Distance thresholds (your plan):**
+
+* 0–15 km → show R400 (bundle)
+* 15–50 km → show R700 (deluxe) & R1,200 (full)
+* 50–60 km → allow **Meet Me Halfway** only (plus fee)
+* > 60 km → disallow and show “outside service area”
+
+**Frontend validation:** calculate distance immediately (or serverless function validates upon submit).
+
+---
+
+# 5) Booking flow & queue logic
+
+### Client flow (UI)
+
+1. Client signs in with Google.
+2. They open “Book a Session” → fill: package selection (filtered by distance), preferred date, location (city/ZIP), meetHalfway toggle if applicable, notes, attach refs.
+3. Client submits → Booking created with `status: "pending"` and `createdAt`.
+4. Cloud Function triggers validation (distance rules) and sets `status` to either:
+
+   * `"queued"` (if you want all to enter queue) OR
+   * `"pending"` (requires admin approval)
+5. Client dashboard shows booking and their `queuePosition` (calculated server-side).
+
+### Queue management (admin)
+
+* Use `createdAt` for FIFO queue. Denormalize `queuePosition` into booking docs for fast reads.
+* Admin can:
+
+  * Approve booking → `status = "approved"`, optionally set `scheduledDate`
+  * Move client up/down (set `priority` to adjust order)
+  * Mark `completed` when done
+  * Cancel and optionally refund
+
+### Queue position calculation (sample logic)
+
+* Server/cloud function runs:
+
+  * Query bookings where `status == "queued"` order by `createdAt` (or `priority`)
+  * Assign incremental `queuePosition` values and update docs (batch write)
+* Alternatively, compute `queuePosition` client-side by counting documents before the booking: cheaper but less stable.
+
+**Edge cases:** If admin approves and sets `scheduledDate`, remove from queue and notify client.
+
+---
+
+# 6) Chat model & realtime behavior
+
+* Chat collection `chats/{chatId}` and subcollection `messages`.
+* `chats` doc stores `participants`, `lastMessage`, `lastMessageAt`, and `unreadCounts`.
+* When client sends a message:
+
+  * add message in `messages` subcollection
+  * update parent `chats` doc with `lastMessage`, `lastMessageAt`, increment the other participant’s `unreadCounts[otherUid]` by 1
+* When a user opens a chat, mark messages read by setting `readBy` flags and decrementing unreadCounts.
+
+**Realtime:** Firestore listeners on `chats` (admin side) and `messages` receive updates instantly. This gives a WhatsApp-like feel.
+
+---
+
+# 7) Security rules (high-level + sample)
+
+* Use Firestore security rules to ensure:
+
+  * Only authenticated users read/write data.
+  * Clients can only read their own `/users/{uid}` and their own bookings.
+  * Admins (custom claim `admin == true`) can read/write all bookings and chats.
+  * Chat participants can read/write messages in their chats.
+
+**Example (simplified):**
+
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == uid;
+    }
+    match /bookings/{bookingId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && (
+          resource.data.userId == request.auth.uid ||
+          request.auth.token.admin == true
+      );
+      allow update, delete: if request.auth != null &&
+          (request.auth.token.admin == true || resource.data.userId == request.auth.uid);
+    }
+    match /chats/{chatId} {
+      allow read, write: if request.auth != null && request.auth.uid in resource.data.participants;
+    }
+    match /chats/{chatId}/messages/{msgId} {
+      allow create: if request.auth != null && request.auth.uid in get(/databases/$(database)/documents/chats/$(chatId)).data.participants;
+      allow read: if request.auth != null && request.auth.uid in get(/databases/$(database)/documents/chats/$(chatId)).data.participants;
+    }
+  }
+}
+```
+
+*Note:* rules must be tested thoroughly before production.
+
+---
+
+# 8) Frontend components & props map (React + Vite)
+
+Use component-based layout for reusability.
+
+### Page-level components
+
+* `App` (routes + auth wrapper)
+* `PublicSite` (hero, portfolio, packages, about, contact)
+* `ClientPortal` (protected route)
+* `AdminPanel` (protected admin route)
+
+### ClientPortal components
+
+* `ClientDashboard`
+
+  * `BookingsList` (shows list, status, queuePosition)
+  * `BookingCard` (details + cancel button)
+* `BookingForm`
+
+  * props: `user`, `baseCoords`, `packages`
+  * handles geocode -> distance -> filter packages
+* `ChatList` (left sidebar)
+
+  * `ChatThread` (main panel)
+  * `MessageInput`
+* `Profile` (user info + uploads)
+* `Notifications` (toast + in-app)
+
+### AdminPanel components
+
+* `BookingQueue`
+
+  * `QueueItem` (approve, moveUp, moveDown, setDate)
+* `ChatAdmin` (left list of chats, right thread view)
+* `Analytics` (optional)
+* `Settings` (distance thresholds, fees, admin list)
+
+### Shared components
+
+* `ProtectedRoute` (checks auth + admin claim)
+* `Modal`, `Lightbox`, `Button`, `Input` (Tailwind + accessible)
+* `Avatar`, `Badge`, `StatusPill`
+
+---
+
+# 9) Cloud Functions & server-side hooks
+
+Use Firebase Cloud Functions for:
+
+* **Distance validation** (on booking create): confirm distance -> set `distanceKm` in booking -> set `status` accordingly.
+* **Queue recalculation**: run when bookings created/updated to reassign `queuePosition`.
+* **Notifications**: send email or push (SendGrid / FCM) when booking approved / message received / queue position changed.
+* **Admin claim assignment**: small function to set custom claim for admin UIDs.
+
+**Example function logic (booking create):**
+
+1. Trigger on `bookings` create.
+2. Use stored base coords + booking coords -> compute distance.
+3. If distance > 60 km → update booking `status: "out_of_area"` and optionally email user.
+4. Else set `distanceKm` and `status: "queued"` (or `pending`) and call queueRecalculate().
+
+---
+
+# 10) Indexes, deployment & operational notes
+
+* **Firestore indexes:** composite index for queries like `{ status, createdAt }` and for chats `{ lastMessageAt }`.
+* **Hosting:** Deploy frontend to Vercel; set environment variables for Firebase config.
+* **Monitoring:** Enable Firebase logging for functions, set alerts on failures.
+* **Backups:** Periodic export of Firestore or use the managed backup service.
+* **GDPR / Privacy:** include a privacy line in booking form about storing email & messages.
+
+---
+
+# Optional UX details & copy snippets
+
+**Booking form hint copy:**
+
+> For safety, we use email-only contact. Sign in with Google to view your booking, chat with Les, and check your place in the queue.
+
+**Meet Me Halfway option label:**
+
+> “Meet me halfway” — I’ll pick a safe, public location within the 50–60km band. A small travel fee of RXXX may apply.
+
+**Queue message to client:**
+
+> “You’re #4 in the queue. I’ll contact you when a slot opens — you can message me anytime in your portal.”
+
+---
+
+# Implementation checklist (practical order)
+
+1. Scaffold React + Vite project + Tailwind.
+2. Add Firebase config + Auth (Google sign-in) + `onAuthStateChanged`.
+3. Implement user doc creation on first login.
+4. Build BookingForm with geocode (or city mapping) + distance calc + submit.
+5. Deploy Firestore & create simple cloud function to validate distance on booking create.
+6. Build ClientPortal bookings list & basic admin panel to read bookings.
+7. Implement chat (Firestore listeners + messages subcollection).
+8. Add unread counts + admin chat UI (sidebar + thread).
+9. Add queue re-calculation function and queuePosition display.
+10. Add notifications/email via SendGrid.
+11. Harden security rules and test.
+12. Polish UI animations (Framer Motion) and mobile responsiveness.
+
+---
+
+# Final notes / recommended immediate decisions for you (Les)
+
+* Decide **base location** coordinates (your city / exact store/studio address) so distance logic is precise.
+* Choose whether you want **automatic queueing** (`queued` automatically) or **admin approval** (`pending` then you approve).
+* Confirm the **halfway travel fee** (e.g., +R150) so it’s shown in the booking UI.
+* Decide how much data you want to collect: city only is more private; coordinates are more accurate but require geocoding.
+
+---
+
+=============================
+
+Perfect — thanks for telling me, Les. Good call to keep your exact address private. Below I’ll give you a clear, actionable plan for using your home/studio location **internally** (to calculate distances) **without ever exposing it to clients**, plus code patterns and copy you can use on the public site.
+
+---
+
+## Key rules (short & secure)
+
+1. **Never show your exact address or exact coordinates on the public site.**
+2. **Store your base location privately** (environment variable / server-side secret). Use it only on the server (Cloud Function) or in admin-only code.
+3. **When communicating to clients, show only a radius or an approximate area** (e.g., “within 60 km of my studio” or “within the greater [city] area”), or use a generic map circle — never a pinpoint.
+4. **Use server-side distance checks** (Cloud Function) so clients can’t see your actual base coordinates in frontend code.
+
+---
+
+## Implementation plan (practical steps)
+
+### 1) Save your base location privately
+
+* Get your latitude/longitude privately (open Maps on your device and copy lat/lng).
+* Save them as environment variables on your server/cloud functions or Vercel secrets:
+
+  * `BASE_LAT`
+  * `BASE_LNG`
+* **Do not** commit these values to source control or include them in client bundle.
+
+Example (Vercel or .env):
+
+```
+BASE_LAT= -25.xxxxx
+BASE_LNG= 28.xxxxx
+MAX_SERVICE_KM=60
+HALFWAY_MIN_KM=50
+HALFWAY_MAX_KM=60
+```
+
+---
+
+### 2) Run distance logic on the server (Cloud Function)
+
+* Use Haversine on the server to calculate distance from the stored `BASE_LAT/LNG` to the client-provided coordinates (or geocoded city/postal coordinates).
+* Reject or mark bookings as out-of-area if distance > `MAX_SERVICE_KM`.
+* Allow the “meet me halfway” option only when distance is between 50–60 km (your configured band).
+
+**Server-side JS snippet (Cloud Function)** — **uses env vars so coords aren’t visible to clients**:
+
+```js
+// cloud/functions/distanceValidation.js
+const functions = require('firebase-functions');
+
+// Read env vars (set via Firebase config or env)
+const BASE_LAT = parseFloat(process.env.BASE_LAT);
+const BASE_LNG = parseFloat(process.env.BASE_LNG);
+const MAX_SERVICE_KM = parseFloat(process.env.MAX_SERVICE_KM || 60);
+const HALFWAY_MIN_KM = parseFloat(process.env.HALFWAY_MIN_KM || 50);
+const HALFWAY_MAX_KM = parseFloat(process.env.HALFWAY_MAX_KM || 60);
+
+function toRad(deg){ return deg * Math.PI / 180; }
+function haversineDistanceKm(lat1, lng1, lat2, lng2){
+  const R = 6371;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
+}
+
+// Example: triggered on booking create
+exports.validateBookingDistance = functions.firestore
+  .document('bookings/{bookingId}')
+  .onCreate(async (snap, context) => {
+    const booking = snap.data();
+    // booking should include either lat/lng or a city string to geocode
+    const clientLat = booking.location?.lat;
+    const clientLng = booking.location?.lng;
+
+    if (typeof clientLat !== 'number' || typeof clientLng !== 'number') {
+      // do geocoding server-side if needed, or mark pending for manual review
+      await snap.ref.update({ status: 'pending', note: 'Needs geocode' });
+      return;
+    }
+
+    const distKm = haversineDistanceKm(BASE_LAT, BASE_LNG, clientLat, clientLng);
+    let status = 'queued';
+    let meetHalfwayAllowed = false;
+
+    if (distKm > MAX_SERVICE_KM) {
+      status = 'out_of_area';
+    } else if (distKm >= HALFWAY_MIN_KM && distKm <= HALFWAY_MAX_KM) {
+      // 50-60km band
+      status = 'queued';
+      meetHalfwayAllowed = true;
+    } else {
+      // within local or mid-distance
+      status = 'queued';
+    }
+
+    await snap.ref.update({
+      distanceKm: Math.round(distKm * 10) / 10,
+      status,
+      meetHalfwayAllowed,
+      lastUpdated: new Date()
+    });
+
+    // Optionally send email/notification to client with appropriate messaging
+});
+```
+
+> Important: Because `BASE_LAT/LNG` are only read server-side, clients can’t inspect your source and get your address.
+
+---
+
+### 3) Geocoding clients’ location (privacy-conscious options)
+
+* **Best (private):** Ask clients for city or postal code, then **geocode server-side** (Mapbox / Google Geocoding) in the Cloud Function (not in client) to get lat/lng for distance calc.
+* **Simpler & private:** Provide a dropdown of common nearby towns/areas you serve; map each selection to coordinates on the server.
+* **Avoid** asking clients for exact addresses publicly.
+
+---
+
+### 4) Public UI wording & map display (what clients see)
+
+* **Never display your exact street or suburb.**
+* Use one of these safe wording options on the site:
+
+  * “I serve clients within a 60 km radius of my studio.”
+  * “Local clients (0–15 km): R400. Mid-distance clients (15–50 km): R700. 50–60 km: Meet Me Halfway option.”
+  * Or: “I only shoot within a 60 km service area. If you’re outside this range, please contact me for special requests.”
+* If you show a map, **show a circle** (radius) centered on an approximate public point (e.g., the city/town center), **not your exact home**. Better yet: show a non-clickable illustrative SVG circle with label “Service radius — 60 km” and no pinpoint.
+
+Suggested public copy (ready to paste):
+
+> **Service Area**
+> I operate within a 60 km service area. Local sessions and pricing vary by distance — please sign in to check which packages are available for your location. For clients between 50–60 km, I offer a **Meet Me Halfway** option with a small travel fee.
+
+---
+
+### 5) Admin-only data & UI
+
+* Your admin dashboard should show full booking details including `distanceKm`, `meetupLocation`, and the raw coords only in the admin panel (never in client profile).
+* Protect this information behind the admin role (custom claim). Only admins see the raw lat/lng.
+* Example: In Firestore, you can store coords but only allow reads in security rules for admin role.
+
+---
+
+### 6) Meet Me Halfway UX
+
+* When a booking falls between 50–60 km:
+
+  * Server sets `meetHalfwayAllowed: true`
+  * Client sees an option checkbox: “I can meet halfway (extra RXXX)”
+  * If client checks it, booking `meetHalfway: true` saved and admin notified to propose meetup spot
+* Meetup spot selection can be a free-text or city park suggestion; admin confirms via chat.
+
+Suggested text for client UI:
+
+> **Meet Me Halfway** — You’re eligible to meet halfway (50–60 km). Add the “Meet Me Halfway” option to propose a public meetup location. A small travel fee of **R150** applies.
+
+---
+
+### 7) What I will (and will not) reveal to clients
+
+* **You WILL reveal:** service radius (e.g., 60 km), which packages are available for which bands, that you offer a “Meet Me Halfway” option, queue position, scheduling details that concern the booking.
+* **You WILL NOT reveal:** your exact street, suburb extension, or latitude/longitude coordinates. Never show a pinpoint on a public map.
+
+---
+
+### 8) Quick checklist for you to complete now
+
+1. Get exact lat/lng privately (from your maps) and store in server env variables.
+2. Deploy the Cloud Function example above and set thresholds (`MAX_SERVICE_KM`, etc.) as env vars.
+3. Implement server-side geocoding or city->coords mapping.
+4. Update booking form to ask only city/ZIP and add a Meet Me Halfway checkbox that appears when `meetHalfwayAllowed` is true (after server validation).
+5. Update public copy to use the suggested phrases so clients know your policy without exact location.
+
+---
+
+
+

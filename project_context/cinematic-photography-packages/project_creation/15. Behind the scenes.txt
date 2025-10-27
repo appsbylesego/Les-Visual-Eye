@@ -1,0 +1,66 @@
+🎞 Behind the Lens with Les
+Real people. Real energy. Real moments.
+Section Copy
+
+Every shoot tells a story — and I believe the story isn’t complete without a final frame.
+
+At the end of each session, I take a few portraits with my clients — natural, relaxed, and authentic. It’s more than a photo; it’s a moment of connection, a behind-the-scenes memory of the cinematic experience we created together.
+
+These images remind me why I do what I do — capturing emotion, building connections, and making every person feel like the main character of their story.
+
+Visual Layout (for Claude)
+
+Section structure:
+
+Full-width container, black or charcoal background (#0A0A0A)
+
+Heading: “Behind the Lens with Les” (Playfair Display / Cinzel font)
+
+Subheading: “Real people. Real energy. Real moments.”
+
+Content layout:
+
+Left column: paragraph text (as above)
+
+Right column / below on mobile: scrollable gallery of Les + clients (2–3 per row)
+
+Each image fades in on scroll (Framer Motion)
+
+Hover / tap: image slightly zooms + light glow
+
+Responsive:
+
+Desktop: 2-column layout
+
+Tablet: stacked text + grid gallery
+
+Mobile: full-width stacked text above images
+
+Animations:
+
+Fade-up text reveal on scroll
+
+Image gallery slides in from bottom
+
+Light film-grain overlay or soft motion blur background (optional)
+
+Optional Add-ons
+
+CTA button below:
+[Book Your Cinematic Session →] (glow + pulse)
+
+Mini caption under the gallery:
+
+“Every story ends with a frame like this 🎬”
+
+Notes for Claude
+
+Wrap the section in <section id="behind-the-lens">
+
+Use Tailwind for spacing and layout
+
+Animate with Framer Motion (fadeIn, slideUp variants)
+
+Make sure gallery supports lightbox if clicked
+
+Ensure mobile images are full-width with padding

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { HiArrowDown } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -70,6 +71,12 @@ const Hero = () => {
           >
             View Portfolio
           </a>
+          <Link
+            to="/login"
+            className="px-8 py-4 bg-gradient-to-r from-cinematic-orange to-gold text-charcoal font-semibold rounded hover:scale-105 hover:shadow-lg hover:shadow-gold/50 transition-all duration-300"
+          >
+            Client Portal
+          </Link>
         </motion.div>
 
         {/* Scroll Indicator */}

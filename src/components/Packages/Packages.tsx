@@ -1,5 +1,57 @@
-import { motion } from 'framer-motion';
-import { HiCamera, HiFilm, HiSparkles } from 'react-icons/hi';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { HiCamera, HiFilm, HiSparkles, HiX } from 'react-icons/hi';
+
+// Package details with shot breakdowns
+const packageDetails: any = {
+  1: {
+    title: 'Cinematic Bundle',
+    description: 'Be the star of your own story. This bundle is designed to capture you — expressive, emotional, and cinematic portraits that feel straight out of a film.',
+    shots: [
+      { category: 'Face Close-Ups', count: 2, description: 'Intense and expressive shots that capture your eyes, emotion, and energy.' },
+      { category: 'Head & Shoulders Portrait', count: 2, description: 'A clean, confident composition — timeless and cinematic.' },
+      { category: 'Half-Body Shot', count: 2, description: 'Waist-up portraits that show attitude, confidence, and movement.' },
+      { category: 'Full-Body Portrait', count: 2, description: 'Elegant posing and full presence — captures your outfit, stance, and personality.' },
+      { category: 'Walking / Motion Shot', count: 2, description: 'Natural movement and energy, as if caught mid-scene.' },
+      { category: 'Looking Away Shot', count: 1, description: 'A reflective, cinematic moment — effortless and emotional.' },
+      { category: 'Seated Pose', count: 1, description: 'Relaxed and grounded, with a storytelling composition.' },
+      { category: 'Over-the-Shoulder Look Back', count: 1, description: 'Adds mystery and intrigue — a perfect movie-style frame.' },
+      { category: 'Expression Series', count: 3, description: 'A range of emotions: smile, serious, confident — showing your versatility.' },
+      { category: 'Dramatic Lighting Portrait', count: 2, description: 'Strong light and shadow contrast — your cinematic finale.' }
+    ]
+  },
+  2: {
+    title: 'Cinematic Deluxe',
+    description: 'Includes everything in the Cinematic Bundle (18 photos) plus 12 additional shots for a total of 30 edited photos.',
+    shots: [
+      { category: 'Everything from Cinematic Bundle', count: 18, description: 'All 18 shots from the base bundle included.' },
+      { category: 'Outfit Change Scene', count: 3, description: 'A new outfit or subtle accessory switch — one close-up, one motion, one full-body.' },
+      { category: 'High-Quality Black & White Portraits', count: 2, description: 'Tight close-up in both landscape and portrait orientation — dramatic contrast, timeless and cinematic.' },
+      { category: 'Street / Urban Vibe', count: 2, description: 'Candid-style portraits with background elements like walls, lights, or subtle motion.' },
+      { category: 'Silhouette Shot', count: 1, description: 'Strong backlight or side light — minimal details, maximum mood.' },
+      { category: 'Reflective Surface / Mirror Portrait', count: 2, description: 'Window, mirror, or shiny surface — creative reflection angles.' },
+      { category: 'Profile / Side Portrait', count: 1, description: 'Clean side-angle showing structure and calm confidence.' },
+      { category: 'Behind-the-Scenes Candid', count: 2, description: 'Laughs, outfit adjustments, or walking to the next shot — brings authenticity.' },
+      { category: 'Light Flare / Bokeh Experiment', count: 2, description: 'Soft-focus, blurred light sources, or lens flares — pure cinematic atmosphere.' }
+    ]
+  },
+  3: {
+    title: 'Full Cinematic Experience',
+    description: 'Step into your own film — every frame, a moment worth remembering. Includes everything in the Cinematic Deluxe Bundle (30 photos) plus an additional 20+ artistic shots for 50+ total edited images.',
+    shots: [
+      { category: 'Everything from Cinematic Deluxe', count: 30, description: 'All 30 shots from the Deluxe bundle included.' },
+      { category: 'Environmental Story Sequence', count: 5, description: 'You interacting naturally with your surroundings — walking through a street, leaning by a wall, or adjusting your jacket. Feels like film stills.' },
+      { category: 'Prop Interaction Shots', count: 3, description: 'Use subtle props like a chair, camera, book, sunglasses, or even a car door. Adds realism and depth.' },
+      { category: 'Cinematic Framing Shots', count: 3, description: 'Creative compositions using objects in the foreground (like door frames, mirrors, railings). Adds visual storytelling and perspective.' },
+      { category: 'Black & White Emotion Series', count: 4, description: 'Deeper emotional range — introspective, confident, joyful, and powerful expressions. Focus on light contrast and authenticity.' },
+      { category: 'Cinematic Duo / Shadow Shot', count: 2, description: 'You interacting with your shadow, or using lighting to create dual tone imagery. Adds symbolism and artistic flair.' },
+      { category: 'Chair / Grounded Portrait', count: 3, description: 'Low-angle or seated shots that focus on presence and attitude. Makes the subject look like a protagonist in a drama scene.' },
+      { category: 'Long Lens Drama', count: 3, description: 'Captured from a distance with compression — blurred background, deep focus. Adds realism and "film lens" aesthetics.' },
+      { category: 'Close-up Hands & Details', count: 2, description: 'Cinematic focus on small details — hands, accessories, or texture moments. Adds intimacy and story depth.' },
+      { category: 'Light Experiment / Prism Shot', count: 2, description: 'Creative lighting, reflections, or glass effects for abstract cinematic visuals. Ends the session with artistic flair.' }
+    ]
+  }
+};
 
 const packages = [
   {
@@ -46,7 +98,7 @@ const packages = [
       '2-hour shoot with full creative direction',
       'Cinematic video reel (30–60 seconds)',
       'Multiple outfit changes',
-      'Priority 3-10 day delivery'
+      'Priority 5–10 day delivery'
     ],
     description: 'Perfect for campaigns, portfolios, or anyone ready for a full cinematic experience.',
     gradient: 'from-gold/30 to-cinematic-orange/30'
@@ -54,6 +106,8 @@ const packages = [
 ];
 
 const Packages = () => {
+  const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
+
   return (
     <section id="packages" className="relative py-20 px-4 md:px-8 lg:px-16 cinematic-gradient">
       {/* Section Header */}
@@ -117,13 +171,24 @@ const Packages = () => {
               {/* Description */}
               <p className="text-gray-400 text-sm mb-6">{pkg.description}</p>
 
-              {/* Button */}
-              <a
-                href="#contact"
-                className="block w-full py-3 text-center bg-gold text-charcoal font-semibold rounded hover:bg-cinematic-orange hover:scale-105 transition-all duration-300"
-              >
-                Book This Shoot
-              </a>
+              {/* Buttons */}
+              <div className="space-y-3">
+                {/* View Package Button - for all packages */}
+                <button
+                  onClick={() => setSelectedPackage(pkg.id)}
+                  className="block w-full py-3 text-center bg-charcoal border-2 border-gold text-gold font-semibold rounded hover:bg-gold hover:text-charcoal hover:scale-105 transition-all duration-300"
+                >
+                  View Package Details
+                </button>
+
+                {/* Book Button */}
+                <a
+                  href="#contact"
+                  className="block w-full py-3 text-center bg-gold text-charcoal font-semibold rounded hover:bg-cinematic-orange hover:scale-105 transition-all duration-300"
+                >
+                  Book This Shoot
+                </a>
+              </div>
             </div>
 
             {/* Hover Glow Effect */}
@@ -163,6 +228,104 @@ const Packages = () => {
           Book Your Session
         </a>
       </motion.div>
+
+      {/* Package Details Modal */}
+      <AnimatePresence>
+        {selectedPackage && packageDetails[selectedPackage] && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 overflow-y-auto"
+            onClick={() => setSelectedPackage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 50 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-charcoal rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto border-2 border-gold/30"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedPackage(null)}
+                className="sticky top-4 right-4 float-right p-3 bg-gold/20 hover:bg-gold/30 text-gold rounded-lg transition-colors z-10"
+              >
+                <HiX className="text-2xl" />
+              </button>
+
+              <div className="p-8 md:p-12">
+                {/* Header */}
+                <div className="mb-8">
+                  <h2 className="font-display text-4xl md:text-5xl font-bold text-gold mb-4">
+                    {packageDetails[selectedPackage].title}
+                  </h2>
+                  <p className="text-lg text-gray-300">
+                    {packageDetails[selectedPackage].description}
+                  </p>
+                </div>
+
+                {/* Shot Breakdown */}
+                <div className="space-y-6">
+                  <h3 className="font-display text-2xl md:text-3xl font-bold mb-6 text-cinematic-orange">
+                    What You'll Get:
+                  </h3>
+
+                  {packageDetails[selectedPackage].shots.map((shot: any, index: number) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="bg-charcoal/50 border border-gold/20 rounded-lg p-6 hover:border-gold/40 transition-all duration-300"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gold to-cinematic-orange rounded-full flex items-center justify-center font-bold text-charcoal">
+                          {shot.count}
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-xl text-gold mb-2">
+                            {shot.category}
+                          </h4>
+                          <p className="text-gray-300">
+                            {shot.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Example Photo Placeholder */}
+                      <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-3">
+                        {Array.from({ length: Math.min(shot.count, 3) }).map((_, photoIndex) => (
+                          <div
+                            key={photoIndex}
+                            className="aspect-[3/4] bg-gradient-to-br from-gold/10 to-cinematic-orange/10 rounded-lg flex items-center justify-center"
+                          >
+                            <p className="text-gray-500 text-xs text-center p-2">
+                              Example photo {photoIndex + 1}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <div className="mt-10 text-center">
+                  <a
+                    href="#contact"
+                    onClick={() => setSelectedPackage(null)}
+                    className="inline-block px-10 py-4 bg-gradient-to-r from-gold to-cinematic-orange text-charcoal font-bold text-lg rounded-lg hover:scale-105 hover:shadow-lg hover:shadow-gold/50 transition-all duration-300"
+                  >
+                    Book This Package
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

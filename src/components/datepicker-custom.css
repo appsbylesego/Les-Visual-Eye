@@ -1,0 +1,118 @@
+/* Custom styles for React DatePicker - Cinematic Theme */
+
+.react-datepicker {
+  font-family: inherit;
+  background-color: #1a1a1a !important;
+  border: 2px solid rgba(218, 165, 32, 0.3) !important;
+  border-radius: 8px;
+}
+
+.react-datepicker__header {
+  background-color: #1a1a1a !important;
+  border-bottom: 1px solid rgba(218, 165, 32, 0.3) !important;
+  padding-top: 12px;
+}
+
+.react-datepicker__current-month {
+  color: #DAA520 !important;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.react-datepicker__day-name {
+  color: rgba(218, 165, 32, 0.7) !important;
+  font-weight: 600;
+  width: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.react-datepicker__day {
+  color: #ffffff !important;
+  width: 2.5rem;
+  line-height: 2.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.react-datepicker__day:hover {
+  background-color: rgba(218, 165, 32, 0.2) !important;
+  color: #DAA520 !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: #DAA520 !important;
+  color: #1a1a1a !important;
+  font-weight: 700;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: rgba(218, 165, 32, 0.3) !important;
+  color: #DAA520 !important;
+}
+
+/* Disabled weekdays */
+.react-datepicker__day--disabled {
+  color: #4a4a4a !important;
+  cursor: not-allowed !important;
+  opacity: 0.3;
+}
+
+.react-datepicker__day--disabled:hover {
+  background-color: transparent !important;
+}
+
+/* Outside month */
+.react-datepicker__day--outside-month {
+  color: #666666 !important;
+  opacity: 0.4;
+}
+
+/* Today */
+.react-datepicker__day--today {
+  font-weight: 700;
+  border: 1px solid rgba(218, 165, 32, 0.5);
+}
+
+/* Navigation buttons */
+.react-datepicker__navigation {
+  top: 12px;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #DAA520 !important;
+}
+
+.react-datepicker__navigation:hover *::before {
+  border-color: #ff7f50 !important;
+}
+
+/* Month container */
+.react-datepicker__month {
+  margin: 0.8rem;
+}
+
+/* Triangle */
+.react-datepicker__triangle {
+  display: none;
+}
+
+/* Wrapper */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+/* Weekend highlighting */
+.react-datepicker__day--weekend:not(.react-datepicker__day--disabled) {
+  background-color: rgba(218, 165, 32, 0.1);
+  font-weight: 600;
+}
+
+/* Popper */
+.react-datepicker-popper {
+  z-index: 50 !important;
+}

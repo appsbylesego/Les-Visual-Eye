@@ -337,9 +337,9 @@ const Contact = () => {
               <h3 className="font-display text-2xl font-bold text-gold">Service Areas</h3>
               <div className="space-y-2 text-gray-300">
                 <p><span className="text-gold">0-15km:</span> All packages available (R400-R1,200)</p>
-                <p><span className="text-gold">15-50km:</span> Deluxe & Full Experience (R700-R1,200)</p>
-                <p><span className="text-gold">50-60km:</span> Meet Me Halfway option (Travel fee applies)</p>
-                <p><span className="text-gold">Beyond 60km:</span> Unavailable</p>
+                <p><span className="text-gold">15-30km:</span> Deluxe or Full Experience (R700-R1,200)</p>
+                <p><span className="text-gold">31-50km:</span> Full Experience (R1,200)</p>
+                <p><span className="text-gold">Beyond 51km +:</span> Unavailable</p>
               </div>
             </motion.div>
           </motion.div>

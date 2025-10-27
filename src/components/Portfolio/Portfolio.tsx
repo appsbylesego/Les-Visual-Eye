@@ -82,8 +82,8 @@ const Portfolio = () => {
             onClick={() => setSelectedCategory(category)}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
               selectedCategory === category
-                ? 'bg-gold text-charcoal scale-105'
-                : 'bg-charcoal border border-gold text-gold hover:bg-gold hover:text-charcoal'
+                ? 'bg-gold text-charcoal scale-105 shadow-lg shadow-gold/30'
+                : 'bg-charcoal border border-gold text-gold hover:bg-gold hover:text-charcoal hover:shadow-lg hover:shadow-gold/30 hover:scale-105'
             }`}
           >
             {category}
